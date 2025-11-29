@@ -1,0 +1,102 @@
+.job-item-details-success-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0px;
+  background-color: #000000;
+}
+
+@media screen and (max-width: 769px) {
+  .job-item-details-success-container {
+    padding: 50px 0px;
+  }
+}
+
+.similar-job-items-container {
+  margin-top: 20px;
+  width: 90%;
+}
+
+.similar-job-items-heading {
+  color: #f8fafc;
+  font-family: Roboto;
+  font-size: 46px;
+  font-weight: 800;
+}
+
+.job-item-details-loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  min-height: 90vh;
+}
+
+.job-item-details-failure-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  padding: 100px 0px;
+  min-height: 90vh;
+}
+
+@media screen and (max-width: 769px) {
+  .job-item-details-failure-container {
+    padding: 150px 10px;
+  }
+}
+
+.job-item-details-failure-img {
+  width: 60%;
+}
+
+@media screen and (max-width: 769px) {
+  .job-item-details-failure-img {
+    width: 80%;
+  }
+}
+
+.job-item-details-failure-heading {
+  color: #f1f5f9;
+  font-family: Roboto;
+  font-size: 56px;
+  font-weight: 800;
+  margin-bottom: 0px;
+}
+
+@media screen and (max-width: 769px) {
+  .job-item-details-failure-heading {
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+.job-item-details-failure-description {
+  color: #cbd5e1;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 769px) {
+  .job-item-details-failure-description {
+    font-size: 18px;
+    text-align: center;
+  }
+}
+
+.job-item-details-retry-btn {
+  color: #cbd5e1;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 800;
+  border: solid 0px;
+  border-radius: 5px;
+  padding: 12px 36px;
+  background-color: #6366f1;
+  cursor: pointer;
+}

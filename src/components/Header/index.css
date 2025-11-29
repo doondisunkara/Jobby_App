@@ -1,9 +1,9 @@
 .nav-header {
-  padding: 30px 50px;
+  padding: 30px 80px;
   background-color: #202020;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 769px) {
   .nav-header {
     padding: 20px;
   }
@@ -15,19 +15,19 @@
   align-items: center;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 769px) {
   .nav-bar-desktop-container {
     display: none;
   }
 }
 
 .website-logo {
-  width: 135px;
+  width: 185px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 769px) {
   .website-logo {
-    width: 65px;
+    width: 105px;
   }
 }
 
@@ -41,7 +41,7 @@
 .nav-menu-item {
   color: #ffffff;
   font-family: Roboto;
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 800;
   margin-left: 50px;
 }
@@ -54,7 +54,7 @@
 .desktop-logout-btn {
   color: #ffffff;
   font-family: Roboto;
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 500;
   border: solid 0px;
   border-radius: 8px;
@@ -69,7 +69,7 @@
   align-items: center;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .nav-bar-mobile-container {
     display: none;
   }
@@ -84,12 +84,12 @@
 }
 
 .nav-menu-item-mobile {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .nav-icons-mobile {
   color: #ffffff;
-  width: 20px;
+  font-size: 30px;
 }
 
 .mobile-logout-btn {

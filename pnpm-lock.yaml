@@ -17,7 +17,7 @@ specifiers:
   prettier: 2.2.1
   react: 17.0.1
   react-dom: 17.0.1
-  react-icons: 4.2.0
+  react-icons: 5.5.0
   react-loader-spinner: 4.0.0
   react-router-dom: 5.2.0
   react-scripts: 4.0.3
@@ -32,7 +32,7 @@ dependencies:
   msw: 0.28.1
   react: 17.0.1
   react-dom: 17.0.1_react@17.0.1
-  react-icons: 4.2.0_react@17.0.1
+  react-icons: 5.5.0_react@17.0.1
   react-loader-spinner: 4.0.0_react-dom@17.0.1+react@17.0.1
   react-router-dom: 5.2.0_react@17.0.1
 
@@ -11795,8 +11795,8 @@ packages:
     resolution: {integrity: sha512-SN/U6Ytxf1QGkw/9ve5Y+NxBbZM6Ht95tuXNMKs8EJyFa/Vy/+Co3stop3KBHARfn/giv+Lj1uUnTfOJ3moFEQ==}
     dev: true
 
-  /react-icons/4.2.0_react@17.0.1:
-    resolution: {integrity: sha512-rmzEDFt+AVXRzD7zDE21gcxyBizD/3NqjbX6cmViAgdqfJ2UiLer8927/QhhrXQV7dEj/1EGuOTPp7JnLYVJKQ==}
+  /react-icons/5.5.0_react@17.0.1:
+    resolution: {integrity: sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==}
     peerDependencies:
       react: '*'
     dependencies:
