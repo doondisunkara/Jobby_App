@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   background-color: #121212;
-  padding: 150px 0px;
+  padding: 200px 0px;
   min-height: 100vh;
 }
 
@@ -24,7 +24,7 @@
 @media screen and (max-width: 767px) {
   .login-content {
     width: 100%;
-    padding: 40px;
+    padding: 0px 30px;
     margin: 80px 30px;
   }
 }
@@ -67,7 +67,7 @@
   font-weight: 500;
   border: solid 1px #b6c5ff;
   border-radius: 5px;
-  padding: 10px 32px;
+  padding: 14px 32px;
   margin: 15px 0px;
   background-color: transparent;
   outline: none;
@@ -94,19 +94,21 @@
 
 @media screen and (max-width: 767px) {
   .submit-btn {
-    font-size: 12px;
+    font-size: 16px;
   }
 }
 
 .error-msg {
   color: #ff0b37;
   font-family: Roboto;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
 
 @media screen and (max-width: 767px) {
   .error-msg {
-    font-size: 8px;
+    font-size: 16px;
   }
 }

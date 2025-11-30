@@ -57,7 +57,7 @@ class Jobs extends Component {
   state = {
     searchInput: '',
     salaryRange: 0,
-    employmentType: [],
+    employmentTypes: [],
     apiStatus: apiStatusConstants.initial,
     jobsList: [],
   }
@@ -79,11 +79,11 @@ class Jobs extends Component {
 
   fetchJobs = async () => {
     const jwtToken = Cookies.get('jwt_token')
-    const {searchInput, salaryRange, employmentType} = this.state
+    const {searchInput, salaryRange, employmentTypes} = this.state
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
-    const apiUrl = `https://apis.ccbp.in/jobs?employment_type=${employmentType.join(
+    const apiUrl = `https://apis.ccbp.in/jobs?employment_type=${employmentTypes.join(
       ',',
     )}&minimum_package=${salaryRange}&search=${searchInput}`
     const options = {
@@ -96,7 +96,6 @@ class Jobs extends Component {
     if (response.ok === true) {
       const data = await response.json()
       const jobsList = data.jobs.map(job => this.formatJobItem(job))
-      console.log(jobsList)
       this.setState({
         jobsList,
         apiStatus: apiStatusConstants.success,
@@ -122,10 +121,44 @@ class Jobs extends Component {
     this.fetchJobs()
   }
 
-  renderInputSearch = () => {
+  onChangeEmployment = event => {
+    const newEmploymentType = event.target.value
+    if (event.target.checked === true) {
+      this.setState(
+        prev => ({
+          employmentTypes: [...prev.employmentTypes, newEmploymentType],
+        }),
+        this.fetchJobs,
+      )
+    } else {
+      this.setState(
+        prev => ({
+          employmentTypes: prev.employmentTypes.filter(
+            id => id !== newEmploymentType,
+          ),
+        }),
+        this.fetchJobs,
+      )
+    }
+  }
+
+  onChangeSalary = event => {
+    if (event.target.checked === true) {
+      this.setState(
+        {
+          salaryRange: event.target.value,
+        },
+        this.fetchJobs,
+      )
+    }
+  }
+
+  renderInputSearch = inputView => {
     const {searchInput} = this.state
+    const inputContainerClassName =
+      inputView === true ? 'input-container' : 'mobile-input-container'
     return (
-      <div className="input-container">
+      <div className={inputContainerClassName}>
         <input
           className="search-input"
           type="text"
@@ -145,6 +178,40 @@ class Jobs extends Component {
     )
   }
 
+  renderCheckbox = employment => (
+    <li className="jobs-filter-item">
+      <input
+        className="jobs-filter-input"
+        id={employment.employmentTypeId}
+        type="checkbox"
+        value={employment.employmentTypeId}
+        onChange={this.onChangeEmployment}
+      />
+      <label
+        className="jobs-filter-label"
+        htmlFor={employment.employmentTypeId}
+      >
+        {employment.label}
+      </label>
+    </li>
+  )
+
+  renderRadioInput = salary => (
+    <li className="jobs-filter-item">
+      <input
+        className="jobs-filter-input"
+        id={salary.salaryRangeId}
+        type="radio"
+        name="salary"
+        value={salary.salaryRangeId}
+        onChange={this.onChangeSalary}
+      />
+      <label className="jobs-filter-label" htmlFor={salary.salaryRangeId}>
+        {salary.label}
+      </label>
+    </li>
+  )
+
   renderNoJobsView = () => (
     <div className="no-jobs-failure-container">
       <img
@@ -152,10 +219,12 @@ class Jobs extends Component {
         src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
         alt="no jobs"
       />
-      <h1 className="no-jobs-failure-heading">No Jobs Found</h1>
-      <p className="no-jobs-failure-description">
-        We could not find any jobs. Try other filters.
-      </p>
+      <div className="no-jobs-failure-details">
+        <h1 className="no-jobs-failure-heading">No Jobs Found</h1>
+        <p className="no-jobs-failure-description">
+          We could not find any jobs. Try other filters.
+        </p>
+      </div>
     </div>
   )
 
@@ -185,17 +254,19 @@ class Jobs extends Component {
         src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
         alt="failure view"
       />
-      <h1 className="no-jobs-failure-heading">Oops! Something Went Wrong</h1>
-      <p className="no-jobs-failure-description">
-        We cannot seem to find the page you are looking for.
-      </p>
-      <button
-        className="jobs-retry-btn"
-        type="button"
-        onClick={this.onClickJobsRetry}
-      >
-        Retry
-      </button>
+      <div className="no-jobs-failure-details">
+        <h1 className="no-jobs-failure-heading">Oops! Something Went Wrong</h1>
+        <p className="no-jobs-failure-description">
+          We cannot seem to find the page you are looking for.
+        </p>
+        <button
+          className="jobs-retry-btn"
+          type="button"
+          onClick={this.onClickJobsRetry}
+        >
+          Retry
+        </button>
+      </div>
     </div>
   )
 
@@ -227,10 +298,25 @@ class Jobs extends Component {
         <Header />
         <div className="jobs-container">
           <div className="profile-container">
+            {this.renderInputSearch(false)}
             <Profile />
+            <div className="jobs-filter-container">
+              <h1 className="jobs-filter-heading">Type of Employment</h1>
+              <ul className="jobs-filter-menu">
+                {employmentTypesList.map(employment =>
+                  this.renderCheckbox(employment),
+                )}
+              </ul>
+            </div>
+            <div className="jobs-filter-container">
+              <h1 className="jobs-filter-heading">Salary Range</h1>
+              <ul className="jobs-filter-menu">
+                {salaryRangesList.map(salary => this.renderRadioInput(salary))}
+              </ul>
+            </div>
           </div>
           <div className="jobs-content">
-            {this.renderInputSearch()}
+            {this.renderInputSearch(true)}
             {this.renderJobs()}
           </div>
         </div>

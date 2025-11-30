@@ -55,10 +55,10 @@ class JobItemDetails extends Component {
     rating: job.rating,
   })
 
-  fetchJobDetails = async () => {
+  fetchJobDetails = async jobItemId => {
     const {match} = this.props
     const {params} = match
-    const {id} = params
+    const id = jobItemId || params.id
     const jwtToken = Cookies.get('jwt_token')
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
@@ -89,6 +89,10 @@ class JobItemDetails extends Component {
     }
   }
 
+  onItemChange = id => {
+    this.fetchJobDetails(id)
+  }
+
   onClickJobItemDetailsRetry = () => {
     this.fetchJobDetails()
   }
@@ -105,6 +109,7 @@ class JobItemDetails extends Component {
               <SimilarJobItem
                 key={similarJob.id}
                 similarJobDetails={similarJob}
+                onItemChange={this.onItemChange}
               />
             ))}
           </ul>
@@ -128,19 +133,21 @@ class JobItemDetails extends Component {
         src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
         alt="failure view"
       />
-      <h1 className="job-item-details-failure-heading">
-        Oops! Something Went Wrong
-      </h1>
-      <p className="job-item-details-failure-description">
-        We cannot seem to find the page you are looking for.
-      </p>
-      <button
-        className="job-item-details-retry-btn"
-        type="button"
-        onClick={this.onClickJobItemDetailsRetry}
-      >
-        Retry
-      </button>
+      <div className="job-item-details-failure">
+        <h1 className="job-item-details-failure-heading">
+          Oops! Something Went Wrong
+        </h1>
+        <p className="job-item-details-failure-description">
+          We cannot seem to find the page you are looking for.
+        </p>
+        <button
+          className="job-item-details-retry-btn"
+          type="button"
+          onClick={this.onClickJobItemDetailsRetry}
+        >
+          Retry
+        </button>
+      </div>
     </div>
   )
 

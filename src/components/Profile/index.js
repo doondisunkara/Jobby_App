@@ -33,7 +33,6 @@ class Profile extends Component {
       method: 'GET',
     }
     const response = await fetch(apiUrl, options)
-    console.log(response)
     if (response.ok === true) {
       const data = await response.json()
       const profileDetails = {
