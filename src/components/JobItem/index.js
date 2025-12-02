@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 import {BsStarFill, BsBriefcaseFill} from 'react-icons/bs'
-import {FaLocationDot} from 'react-icons/fa6'
+import {FaMapMarkerAlt} from 'react-icons/fa'
 
 import './index.css'
 
@@ -23,7 +23,7 @@ const JobItem = props => {
           <img
             className="job-item-company-img"
             src={companyLogoUrl}
-            alt={title}
+            alt="company logo"
           />
           <div className="job-item-role-details">
             <h1 className="job-item-role">{title}</h1>
@@ -36,7 +36,7 @@ const JobItem = props => {
         <div className="job-item-details-content">
           <div className="job-item-details">
             <div className="job-item-extra-details">
-              <FaLocationDot className="job-item-icon" />
+              <FaMapMarkerAlt className="job-item-icon" />
               <p className="job-item-icon-title">{location}</p>
             </div>
             <div className="job-item-extra-details">

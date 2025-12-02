@@ -31,9 +31,9 @@ class Login extends Component {
     history.replace('/')
   }
 
-  onSubmitFailure = () => {
+  onSubmitFailure = errorMsg => {
     this.setState({
-      errorMsg: "*Username and Password didn't match",
+      errorMsg,
     })
   }
 
@@ -51,15 +51,19 @@ class Login extends Component {
         body: JSON.stringify(userDetails),
       }
       const response = await fetch(apiUrl, options)
+      const data = await response.json()
       if (response.ok === true) {
-        const data = await response.json()
         this.onSubmitSuccess(data.jwt_token)
       } else {
-        this.onSubmitFailure()
+        this.onSubmitFailure(data.error_msg)
       }
+    } else if (username === '') {
+      this.setState({
+        errorMsg: '*Username is needed',
+      })
     } else {
       this.setState({
-        errorMsg: '*Username and Password are needed',
+        errorMsg: '*Password is needed',
       })
     }
   }

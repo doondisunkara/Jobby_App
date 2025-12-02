@@ -161,7 +161,7 @@ class Jobs extends Component {
       <div className={inputContainerClassName}>
         <input
           className="search-input"
-          type="text"
+          type="search"
           placeholder="Search"
           value={searchInput}
           onChange={this.changeSearchInput}
@@ -179,7 +179,7 @@ class Jobs extends Component {
   }
 
   renderCheckbox = employment => (
-    <li className="jobs-filter-item">
+    <li className="jobs-filter-item" key={employment.employmentTypeId}>
       <input
         className="jobs-filter-input"
         id={employment.employmentTypeId}
@@ -197,7 +197,7 @@ class Jobs extends Component {
   )
 
   renderRadioInput = salary => (
-    <li className="jobs-filter-item">
+    <li className="jobs-filter-item" key={salary.salaryRangeId}>
       <input
         className="jobs-filter-input"
         id={salary.salaryRangeId}

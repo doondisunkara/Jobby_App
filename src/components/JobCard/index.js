@@ -1,14 +1,12 @@
 import {BsStarFill, BsBriefcaseFill} from 'react-icons/bs'
-import {FaExternalLinkAlt} from 'react-icons/fa'
-
-import {FaLocationDot} from 'react-icons/fa6'
+import {FaExternalLinkAlt, FaMapMarkerAlt} from 'react-icons/fa'
 
 import './index.css'
 
 const renderSkillItem = skill => {
   const {name, imageUrl} = skill
   return (
-    <li className="job-card-skill-item">
+    <li className="job-card-skill-item" key={name}>
       <img className="job-card-skill-img" src={imageUrl} alt="skill" />
       <h1 className="job-card-skill-name">{name}</h1>
     </li>
@@ -35,7 +33,7 @@ const JobCard = props => {
         <img
           className="job-card-company-img"
           src={companyLogoUrl}
-          alt={title}
+          alt="job details company logo"
         />
         <div className="job-card-role-details">
           <h1 className="job-card-role">{title}</h1>
@@ -48,7 +46,7 @@ const JobCard = props => {
       <div className="job-card-details-content">
         <div className="job-card-details">
           <div className="job-card-extra-details">
-            <FaLocationDot className="job-card-icon" />
+            <FaMapMarkerAlt className="job-card-icon" />
             <p className="job-card-icon-title">{location}</p>
           </div>
           <div className="job-card-extra-details">
@@ -56,7 +54,7 @@ const JobCard = props => {
             <p className="job-card-icon-title">{employmentType}</p>
           </div>
         </div>
-        <h1 className="job-card-package">{packagePerAnnum}</h1>
+        <p className="job-card-package">{packagePerAnnum}</p>
       </div>
       <div className="job-card-description-content">
         <div className="job-card-description-header">
