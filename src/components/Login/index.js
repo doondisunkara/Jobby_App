@@ -44,27 +44,17 @@ class Login extends Component {
       username,
       password,
     }
-    if (username !== '' && password !== '') {
-      const apiUrl = 'https://apis.ccbp.in/login'
-      const options = {
-        method: 'POST',
-        body: JSON.stringify(userDetails),
-      }
-      const response = await fetch(apiUrl, options)
-      const data = await response.json()
-      if (response.ok === true) {
-        this.onSubmitSuccess(data.jwt_token)
-      } else {
-        this.onSubmitFailure(data.error_msg)
-      }
-    } else if (username === '') {
-      this.setState({
-        errorMsg: '*Username is needed',
-      })
+    const apiUrl = 'https://apis.ccbp.in/login'
+    const options = {
+      method: 'POST',
+      body: JSON.stringify(userDetails),
+    }
+    const response = await fetch(apiUrl, options)
+    const data = await response.json()
+    if (response.ok === true) {
+      this.onSubmitSuccess(data.jwt_token)
     } else {
-      this.setState({
-        errorMsg: '*Password is needed',
-      })
+      this.onSubmitFailure(data.error_msg)
     }
   }
 
