@@ -7,7 +7,7 @@ const renderSkillItem = skill => {
   const {name, imageUrl} = skill
   return (
     <li className="job-card-skill-item" key={name}>
-      <img className="job-card-skill-img" src={imageUrl} alt="skill" />
+      <img className="job-card-skill-img" src={imageUrl} alt={name} />
       <h1 className="job-card-skill-name">{name}</h1>
     </li>
   )
@@ -81,7 +81,7 @@ const JobCard = props => {
           <img
             className="job-card-life-at-company-img"
             src={lifeAtCompany.imageUrl}
-            alt={title}
+            alt="life at company"
           />
         </div>
       </div>
